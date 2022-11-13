@@ -1,0 +1,38 @@
+module moore_eqdet(w1,w2,wz,clk,reset);
+ input w1,w2,clk,reset;
+  output reg wz;
+  reg eq;
+  reg [0:1]ps,ns;
+  always@(w1,w2) begin
+    if(w1==w2) eq=1;
+    else eq=0;
+  end
+  parameter s0=0,s1=1,s2=2,s3=3,s4=4;
+  always@(posedge clk,posedge reset)
+    if (reset) ps<=0;
+  else  ps<=ns;
+  always@(ps,eq)
+    case(ps)
+      s0:begin
+        wz=eq?0:0;
+        ns=eq?s1:s0;
+      end
+      s1:begin
+        wz=eq?0:0;
+        ns=eq?s2:s0;
+      end
+      s2:begin
+        wz=eq?0:0;
+        ns=eq?s3:s0;
+      end
+      s3:begin
+        wz=eq?0:0;
+        ns=eq?s4:s0;
+      end
+      s4:begin
+        wz=eq?1:0;
+        ns=eq?s1:s0;
+      end
+    endcase
+endmodule
+      
