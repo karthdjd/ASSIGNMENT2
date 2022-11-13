@@ -1,0 +1,28 @@
+module mealy_parity(w,p,clk,reset);
+ input w,clk,reset;
+  output reg p;
+  
+  reg [0:1]ps,ns;
+ 
+  parameter s0=0,s1=1,s2=2,s3=3;
+  always@(posedge clk,posedge reset)
+    if (reset) ps<=0;
+  else  ps<=ns;
+  always@(ps,w)
+    case(ps)
+      s0:begin
+        p=w?1:0;
+        ns=w?s1:s0;
+      end
+      s1:begin
+        p=w?0:1;
+        ns=w?s2:s0;
+      end
+      s2:begin
+        p=w?1:0;
+        ns=w?s1:s0;
+      end
+      
+     
+    endcase
+endmodule
