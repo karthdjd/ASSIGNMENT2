@@ -1,4 +1,4 @@
-module  modu_12(input clk,rst,load,input [3:0]data,output [3:0]cout);
+module  modulo_12(input clk,rst,load,input [3:0]data,output [3:0]cout);
   always@(postedge clk)
     begin
       if(rst)
