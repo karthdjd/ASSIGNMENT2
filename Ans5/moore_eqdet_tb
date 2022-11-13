@@ -9,11 +9,11 @@ module moore_eqdet_tb;
   end
   always #5 clk=~clk;
   initial begin
-    #12 w1=1; w2=1;
+    #12 w1=0; w2=1;
     #10 w1=1;w2=1;
+    #10 w1=0;w2=1;
     #10 w1=0;w2=0;
-    #10 w1=0;w2=0;
-    #10 w1=1;w2=1;
+    #10 w1=0;w2=1;
     #10 w1=0;w2=0;
     
     #100 $finish;
