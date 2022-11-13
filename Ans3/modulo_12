@@ -1,5 +1,5 @@
 module  modulo_12(input clk,rst,load,input [3:0]data,output [3:0]cout);
-  always@(postedge clk)
+  always@(posedge clk)
     begin
       if(rst)
         count <=4'd0;
