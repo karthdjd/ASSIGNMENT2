@@ -1,0 +1,22 @@
+module moore_parity_tb;
+  reg w,clk,reset; wire p;
+  moore_parity pa(w,p,clk,reset);
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars;
+    clk=1'b0; reset=1'b1;
+    #15 reset=1'b0;
+  end
+  always #5 clk=~clk;
+  initial begin
+    #12 w=0; #10w=1;
+    #10 w=1;#10w=1;
+    #10 w=0;#10w=1;
+    #10 w=0;#10w=0;
+    #10 w=1;#10w=1;
+    #10 w=1;#10w=0;
+    
+    #100 $finish;
+  end
+endmodule
+  
